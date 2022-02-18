@@ -1,9 +1,6 @@
 const db = require("../models");
 const config = require("../config/auth.config");
 const Pembanding = db.pembanding;
-const Op = db.Sequelize.Op;
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
 
 
 exports.findAll  = (req, res) => {
@@ -39,3 +36,19 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+
+exports.create = (req, res) => {
+    Pembanding.create({
+      name:   req.body.name,
+      lokasi: req.body.lokasi,
+      alamat: req.body.alamat,
+      contact_person: req.body.contact_person
+    }).then(data => {
+       res.send(data)
+    })
+    .catch(err => {
+       res.status(500).send({ message: err.message });
+    });
+
+}

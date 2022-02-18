@@ -10,5 +10,6 @@ module.exports = function(app) {
   });
   app.get("/api/pembanding/findall",[authJwt.verifyToken],controller.findAll);
   app.get("/api/pembanding/findone/:id",[authJwt.verifyToken],controller.findOne);
+  app.post("/api/pembanding/create",[authJwt.verifyToken],controller.create);
   // app.post("/api/pembanding/create",[authJwt.verifyToken],controller.findAll);
 };
